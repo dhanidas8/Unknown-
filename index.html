@@ -1,325 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Will You Be My Valentine?</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Comic Sans MS', 'Poppins', cursive;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      background-size: 300% 300%;
-      animation: bgMove 10s ease infinite;
-      text-align: center;
-      color: #d6336c;
-      overflow-x: hidden;
-    }
-
-    @keyframes bgMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .container { padding: 20px; }
-    h1 { font-size: 2.2em; margin-top: 20px; }
-    p { font-size: 1.1em; }
-
-    .decor { font-size: 2.5em; margin: 10px 0; }
-
-    .card {
-      background: white;
-      border-radius: 20px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 400px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-
-    ul { list-style: none; padding: 0; }
-    ul li { margin: 8px 0; }
-
-    button {
-      background: #ff4d6d;
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      font-size: 1.1em;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-
-    button:hover { background: #e63956; }
-    .hidden {
-  display: none !important;
-    }
-
-    .final { font-size: 1.3em; margin-top: 20px; }
-
-    .glow {
-      text-shadow: 0 0 10px #ff4d6d, 0 0 20px #ff85a2;
-    }
-
-    .happy {
-      font-size: 2.2em;
-      margin-top: 15px;
-      animation: pop 1.5s infinite;
-    }
-
-    @keyframes pop {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.3) rotate(5deg); }
-      100% { transform: scale(1); }
-    }
-
-    .official {
-      margin-top: 10px;
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #ff2d55;
-      animation: glowPulse 2s infinite;
-    }
-
-    @keyframes glowPulse {
-      0% { text-shadow: 0 0 5px #ff85a2; }
-      50% { text-shadow: 0 0 15px #ff4d6d; }
-      100% { text-shadow: 0 0 5px #ff85a2; }
-    }
-
-    /* Heart rain */
-    .heart {
-      position: fixed;
-      top: -10px;
-      font-size: 20px;
-      animation: fall 5s linear forwards;
-      pointer-events: none;
-    }
-
-    @keyframes fall {
-      to { transform: translateY(110vh); opacity: 0; }
-    }
-
-    /* Thunder rain */
-    .rain {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 999;
-    }
-
-    .drop {
-      position: absolute;
-      width: 2px;
-      height: 15px;
-      background: rgba(255,255,255,0.8);
-      animation: rainFall 1s linear infinite;
-    }
-
-    @keyframes rainFall {
-      to { transform: translateY(110vh); }
-    }
-
-    /* Dog image */
-    #dogImg {
-      display: none;
-      max-width: 80%;
-      margin: 20px auto;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    /* Popup styles */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
+<style>
+body{
+  margin:0;
+  font-family:'Comic Sans MS','Poppins',cursive;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  background-size:300% 300%;
+  animation:bgMove 10s infinite;
+  text-align:center;
+  color:#d6336c;
+  overflow-x:hidden;
+}
+@keyframes bgMove{
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
-.popup-content {
-  background: white;
-  padding: 25px;
-  border-radius: 20px;
-  max-width: 300px;
-  text-align: center;
-  animation: popupZoom 0.5s ease;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+.container{padding:20px}
+h1{font-size:2.2em}
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:20px;
+  margin:20px auto;
+  max-width:400px;
+  box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+ul{list-style:none;padding:0}
+ul li{margin:8px 0}
+
+button{
+  background:#ff4d6d;
+  color:white;
+  border:none;
+  padding:12px 22px;
+  font-size:1.1em;
+  border-radius:30px;
+  cursor:pointer;
+  margin:10px;
+}
+button:hover{background:#e63956}
+
+.hidden{display:none !important}
+
+.decor{font-size:2.5em}
+
+.final{font-size:1.2em;margin-top:20px}
+
+.happy{
+  font-size:2.5em;
+  animation:pop 1.2s infinite;
+}
+@keyframes pop{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.3)}
+  100%{transform:scale(1)}
 }
 
-.popup-emoji {
-  font-size: 2.5em;
-  margin-bottom: 10px;
-  animation: pop 1.2s infinite;
+.official{
+  font-size:1.3em;
+  color:#ff2d55;
+  animation:glow 2s infinite;
+}
+@keyframes glow{
+  0%{text-shadow:0 0 5px #ff85a2}
+  50%{text-shadow:0 0 15px #ff4d6d}
+  100%{text-shadow:0 0 5px #ff85a2}
 }
 
-.popup-content h2 {
-  color: #ff2d55;
-  margin-bottom: 10px;
+/* Hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  font-size:22px;
+  animation:fall 5s linear forwards;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);opacity:0}
 }
 
-.popup-content button {
-  margin-top: 10px;
-  background: #ff4d6d;
+/* Thunder rain */
+.rain{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:999;
+}
+.drop{
+  position:absolute;
+  width:2px;
+  height:15px;
+  background:white;
+  animation:rainFall 1s linear infinite;
+}
+@keyframes rainFall{
+  to{transform:translateY(110vh)}
 }
 
-@keyframes popupZoom {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-    }
-  </style>
+/* Dog GIF */
+#dogImg{
+  display:none;
+  max-width:80%;
+  margin:20px auto;
+  border-radius:16px;
+}
+
+/* Popup */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  display:none;
+}
+.popup.show{display:flex}
+
+.popup-content{
+  background:white;
+  padding:25px;
+  border-radius:20px;
+  max-width:300px;
+}
+.popup-emoji{font-size:2.5em}
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="decor">🌸🧸🌹💖</div>
-    <h1 class="glow">Heyy Baby ❤️</h1>
-    <p>Just wanted to tell you something really sweet...</p>
 
-    <div class="card">
-      <p><strong>You know there are such days in Valentine’s week 💕</strong></p>
-      <ul>
-        <li>🌹 Rose Day</li>
-        <li>💌 Propose Day</li>
-        <li>🍫 Chocolate Day</li>
-        <li>🧸 Teddy Day</li>
-        <li>🤗 Hug Day</li>
-        <li>😘 Kiss Day</li>
-        <li>❤️ Valentine’s Day</li>
-      </ul>
-    </div>
+<div class="container">
+  <div class="decor">🌸🧸🌹💖</div>
+  <h1>Heyy Baby ❤️</h1>
+  <p>Just wanted to tell you something sweet…</p>
 
-    <button onclick="askValentine()">Tap to Continue 💖</button>
-
-    <div id="question" class="hidden">
-      <h1>Will you be my Valentine, love? 💘</h1>
-      <button onclick="showFinal()">Yes 💕</button>
-      <button onclick="noClicked()" id="noBtn">No 🙈</button>
-    </div>
-
-    <!-- Dog image -->
-    <img id="dogImg" src="dog.gif" alt="sad dog">
-
-    <div id="finalMessage" class="hidden final">
-      <div class="happy" id="happyEmojis">🥰</div>
-      <p>Yayyy 🥰💃</p>
-      <p>Be ready to celebrate <br><strong>ALL these days with me 💖🌹🧸</strong></p>
-      <p class="official">💍 We are officially US now 💖</p>
-      <div class="decor">🌸💞🌹🧸✨</div>
-    </div>
+  <div class="card">
+    <p><strong>You know there are such days in Valentine’s 💕</strong></p>
+    <ul>
+      <li>🌹 Rose Day</li>
+      <li>💌 Propose Day</li>
+      <li>🍫 Chocolate Day</li>
+      <li>🧸 Teddy Day</li>
+      <li>🤗 Hug Day</li>
+      <li>😘 Kiss Day</li>
+      <li>❤️ Valentine’s Day</li>
+    </ul>
   </div>
 
-  <script>
-    let noCount = 0;
+  <button onclick="askValentine()">Tap to Continue 💖</button>
 
-    function askValentine() {
-      document.getElementById("question").classList.remove("hidden");
-    }
+  <div id="question" class="hidden">
+    <h1>Will you be my Valentine, love? 💘</h1>
+    <button onclick="yesClicked()">Yes 💕</button>
+    <button onclick="noClicked()" id="noBtn">No 🙈</button>
+  </div>
 
-    function showFinal() {
-  document.getElementById("question").classList.add("hidden");
-  document.getElementById("finalMessage").classList.remove("hidden");
-  document.getElementById("dogImg").style.display = "none";
-  document.body.style.background =
-    "linear-gradient(135deg, #ff9a9e, #fad0c4)";
+  <img id="dogImg" src="dog.gif">
 
-  animateHappyEmojis();
-  startHeartRain();
+  <div id="finalMessage" class="hidden final">
+    <div class="happy" id="happyEmojis">🥰</div>
+    <p>Yayyy 🥰💃</p>
+    <p>Be ready to celebrate ALL these days with me 💖</p>
+    <p class="official">💍 We are officially US now 💖</p>
+  </div>
+</div>
 
-  // ✅ popup appears ONLY after YES
-  setTimeout(() => {
-    document.getElementById("popup").classList.remove("hidden");
-  }, 1500);
-}
-
-    function noClicked() {
-      noCount++;
-      const noBtn = document.getElementById("noBtn");
-
-      if (noCount < 3) {
-        startThunderRain();
-        document.body.style.background = "linear-gradient(#2c2c54, #40407a)";
-        document.getElementById("dogImg").style.display = "block";
-        alert("why did you did that dawgg 🐶");
-
-        noBtn.innerText = [
-          "Are you sure? 😢⚡",
-          "Think again 🥺🌩️",
-          "Last chance 😭⛈️"
-        ][noCount - 1];
-      } else {
-        showFinal();
-      }
-    }
-
-    function startHeartRain() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerText = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-      }, 300);
-    }
-
-    function startThunderRain() {
-      const rain = document.createElement("div");
-      rain.className = "rain";
-      document.body.appendChild(rain);
-
-      for (let i = 0; i < 60; i++) {
-        const drop = document.createElement("div");
-        drop.className = "drop";
-        drop.style.left = Math.random() * 100 + "vw";
-        rain.appendChild(drop);
-      }
-
-      setTimeout(() => rain.remove(), 2000);
-    }
-
-    function animateHappyEmojis() {
-      const emojis = ["🥰","😍","🤗","💖","✨"];
-      const el = document.getElementById("happyEmojis");
-      let i = 0;
-      setInterval(() => {
-        el.innerText = emojis[i % emojis.length];
-        i++;
-      }, 800);
-    }
-    function showPopup() {
-  document.getElementById("popup").classList.remove("hidden");
-  
-}
-
-function closePopup() {
-  document.getElementById("popup").classList.add("hidden");
-
-  // Final alert ❤️ (VERY LAST)
-  setTimeout(() => {
-    alert(" Love You forever Fuck You Chikku 😌💖");
-  }, 300);
-}
-  </script>
-  <!-- Custom Popup -->
-<div id="popup" class="popup hidden">
+<!-- Popup -->
+<div id="popup" class="popup">
   <div class="popup-content">
     <div class="popup-emoji">💖🥰💍</div>
     <h2>We are official now!</h2>
     <p>Yayyy!! I’m so happy 🥺❤️</p>
-    
     <button onclick="closePopup()">Awww 🥰</button>
   </div>
 </div>
+
+<script>
+let noCount=0;
+
+function askValentine(){
+  document.getElementById("question").classList.remove("hidden");
+}
+
+function yesClicked(){
+  document.getElementById("question").classList.add("hidden");
+  document.getElementById("finalMessage").classList.remove("hidden");
+  document.getElementById("dogImg").style.display="none";
+  startHeartRain();
+  animateHappyEmojis();
+
+  setTimeout(()=>{
+    document.getElementById("popup").classList.add("show");
+  },1500);
+}
+
+function noClicked(){
+  noCount++;
+  startThunderRain();
+  document.body.style.background="linear-gradient(#2c2c54,#40407a)";
+  document.getElementById("dogImg").style.display="block";
+  alert("why did you did that dawgg 🐶");
+
+  if(noCount>=3){
+    yesClicked();
+  }
+}
+
+function closePopup(){
+  document.getElementById("popup").classList.remove("show");
+  setTimeout(()=>{
+    alert("Love You forever Fuck You Chikku 😌💖");
+  },300);
+}
+
+function startHeartRain(){
+  setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },300);
+}
+
+function startThunderRain(){
+  const rain=document.createElement("div");
+  rain.className="rain";
+  document.body.appendChild(rain);
+  for(let i=0;i<60;i++){
+    const d=document.createElement("div");
+    d.className="drop";
+    d.style.left=Math.random()*100+"vw";
+    rain.appendChild(d);
+  }
+  setTimeout(()=>rain.remove(),2000);
+}
+
+function animateHappyEmojis(){
+  const e=["🥰","😍","🤗","💖","✨"];
+  const el=document.getElementById("happyEmojis");
+  let i=0;
+  setInterval(()=>{el.innerText=e[i++%e.length]},800);
+}
+</script>
+
 </body>
   </html>
