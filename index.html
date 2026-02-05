@@ -131,6 +131,50 @@
       border-radius: 16px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
+    /* Popup styles */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 300px;
+  text-align: center;
+  animation: popupZoom 0.5s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+.popup-emoji {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  animation: pop 1.2s infinite;
+}
+
+.popup-content h2 {
+  color: #ff2d55;
+  margin-bottom: 10px;
+}
+
+.popup-content button {
+  margin-top: 10px;
+  background: #ff4d6d;
+}
+
+@keyframes popupZoom {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+    }
   </style>
 </head>
 
@@ -181,12 +225,16 @@
     }
 
     function showFinal() {
-      document.getElementById("question").classList.add("hidden");
-      document.getElementById("finalMessage").classList.remove("hidden");
-      document.getElementById("dogImg").style.display = "none";
-      document.body.style.background = "linear-gradient(135deg, #ff9a9e, #fad0c4)";
-      animateHappyEmojis();
-      startHeartRain();
+  document.getElementById("question").classList.add("hidden");
+  document.getElementById("finalMessage").classList.remove("hidden");
+  document.getElementById("dogImg").style.display = "none";
+  document.body.style.background = "linear-gradient(135deg, #ff9a9e, #fad0c4)";
+  
+  animateHappyEmojis();
+  startHeartRain();
+
+  // show custom popup after 1.5 seconds
+  setTimeout(showPopup, 1500);
     }
 
     function noClicked() {
@@ -244,6 +292,22 @@
         i++;
       }, 800);
     }
+    function showPopup() {
+  document.getElementById("popup").classList.remove("hidden");
+}
+
+function closePopup() {
+  document.getElementById("popup").classList.add("hidden");
+    }
   </script>
+  <!-- Custom Popup -->
+<div id="popup" class="popup hidden">
+  <div class="popup-content">
+    <div class="popup-emoji">💖🥰💍</div>
+    <h2>We are official now!</h2>
+    <p>Yayyy!! I’m so happy 🥺❤️</p>
+    <button onclick="closePopup()">Awww 🥰</button>
+  </div>
+</div>
 </body>
   </html>
