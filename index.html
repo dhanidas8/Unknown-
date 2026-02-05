@@ -228,14 +228,17 @@
   document.getElementById("question").classList.add("hidden");
   document.getElementById("finalMessage").classList.remove("hidden");
   document.getElementById("dogImg").style.display = "none";
-  document.body.style.background = "linear-gradient(135deg, #ff9a9e, #fad0c4)";
-  
+  document.body.style.background =
+    "linear-gradient(135deg, #ff9a9e, #fad0c4)";
+
   animateHappyEmojis();
   startHeartRain();
 
-  // show custom popup after 1.5 seconds
-  setTimeout(showPopup, 1500);
-    }
+  // ✅ popup appears ONLY after YES
+  setTimeout(() => {
+    document.getElementById("popup").classList.remove("hidden");
+  }, 1500);
+}
 
     function noClicked() {
       noCount++;
