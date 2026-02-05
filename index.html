@@ -1,0 +1,151 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Poppins', cursive;
+      background: linear-gradient(#ffe6f0, #fff);
+      text-align: center;
+      color: #d6336c;
+    }
+    .container {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2.2em;
+      margin-top: 20px;
+    }
+    p {
+      font-size: 1.1em;
+    }
+    .decor {
+      font-size: 2.5em;
+      margin: 10px 0;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1em;
+    }
+    ul li {
+      margin: 8px 0;
+    }
+    button {
+      background: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      font-size: 1.1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover {
+      background: #e63956;
+    }
+    .hidden {
+      display: none;
+    }
+    .final {
+      font-size: 1.3em;
+      margin-top: 20px;
+    }
+  </style>
+  <style>
+    .heart {
+      position: fixed;
+      top: -10px;
+      font-size: 20px;
+      animation: fall 5s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="decor">🌸🧸🌹💖</div>
+    <h1>Hey You ❤️</h1>
+    <p>Just wanted to tell you something really sweet...</p><div class="card">
+  <p><strong>You know there are such days in Valentine’s week 💕</strong></p>
+  <ul>
+    <li>🌹 Rose Day</li>
+    <li>💌 Propose Day</li>
+    <li>🍫 Chocolate Day</li>
+    <li>🧸 Teddy Day</li>
+    <li>🤗 Hug Day</li>
+    <li>😘 Kiss Day</li>
+    <li>❤️ Valentine’s Day</li>
+  </ul>
+</div>
+
+<button onclick="askValentine()">Tap to Continue 💖</button>
+
+<div id="question" class="hidden">
+  <h1>Will you be my Valentine, love? 💘</h1>
+  <button onclick="showFinal()">Yes 💕</button>
+  <button onclick="noClicked()" id="noBtn">No 🙈</button>
+</div>
+
+<div id="finalMessage" class="hidden final">
+  <p>Yayyy 🥰💃</p>
+  <p>Okay then, be ready to celebrate <br><strong>ALL these days with me 💖🌹🧸</strong></p>
+  <div class="decor">🌸💞🌹🧸✨</div>
+</div>
+
+  </div>  <script>
+    let noCount = 0;
+
+    function askValentine() {
+      document.getElementById('question').classList.remove('hidden');
+    }
+
+    function showFinal() {
+      document.getElementById('finalMessage').classList.remove('hidden');
+      document.getElementById('question').classList.add('hidden');
+      startHeartRain();
+    }
+
+    function startHeartRain() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 300);
+    }
+
+    function noClicked() {
+      noCount++;
+      const noBtn = document.getElementById('noBtn');
+
+      if (noCount < 3) {
+        noBtn.innerText = ["Are you sure? 😢", "Think again 🥺", "Last chance 😭"][noCount - 1];
+      } else {
+        showFinal();
+      }
+    }
+  </script></body>
+</html>
